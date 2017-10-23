@@ -22,7 +22,7 @@ public class CrimeLab {
     }
 
     private CrimeLab(Context context){
-        mCrimes = new ArrayList<>();
+        mCrimes = new ArrayList<>();//Might be issue with setting solved
         for (int i = 0; i< 100; i++){
             Crime crime = new Crime();
             crime.setTitle("Crime #" + i);
