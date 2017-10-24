@@ -1,6 +1,7 @@
 package com.bignerdranch.android.criminalintent;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;//Changed from android.app.dialogfragment. hopefully ok
 import android.support.v7.app.AlertDialog;
@@ -18,6 +19,8 @@ import java.util.Date;
 public class DatePickerFragment extends DialogFragment {
     private static final String ARG_DATE = "date";
     private DatePicker mDatePicker;
+
+    public static final String EXTRA_DATE = "com.bignerdranch.android.criminalintent.date";
 
     public static DatePickerFragment newInstance(Date date){
         Bundle args = new Bundle();
@@ -45,5 +48,16 @@ public class DatePickerFragment extends DialogFragment {
 
         return new AlertDialog.Builder(getActivity()).setView(v).setTitle(R.string.date_picker_title).setPositiveButton(android.R.string.ok, null).create();
         //positivebutton is what prompts dialog box.
+    }
+
+    private void sendResult(int resultCode, Date date) {
+        if (getTargetFragment() == null) {
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_DATE, date);
+
+        getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, intent);
     }
 }
