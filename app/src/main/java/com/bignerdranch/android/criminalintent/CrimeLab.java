@@ -15,7 +15,7 @@ import database.CrimeBaseHelper;
 
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
-    private List<Crime> mCrimes;
+    //private List<Crime> mCrimes;
 
     private Context mContext;
     private SQLiteDatabase mDatabase;
@@ -30,7 +30,7 @@ public class CrimeLab {
     private CrimeLab(Context context){
         mContext = context.getApplicationContext();
         mDatabase = new CrimeBaseHelper(mContext).getWritableDatabase();
-        mCrimes = new ArrayList<>();
+        //mCrimes = new ArrayList<>();
        /* for (int i = 0; i< 100; i++){
             Crime crime = new Crime();
             crime.setTitle("Crime #" + i);
@@ -40,19 +40,19 @@ public class CrimeLab {
     }
 
     public List<Crime> getCrimes(){
-        return mCrimes;
+        //return mCrimes;
     }
 
     public void addCrime(Crime c){
-        mCrimes.add(c);
+        //mCrimes.add(c);
     }
 
     public Crime getCrime(UUID id){
-        for (Crime crime : mCrimes){
+        /*for (Crime crime : mCrimes){
             if(crime.getId().equals(id)){
                 return crime;
             }
-        }
+        }*/
         return null;
     }
 }
