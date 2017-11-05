@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 import database.CrimeBaseHelper;
+import database.CrimeCursorWrapper;
 import database.CrimeDbSchema;
 import database.CrimeDbSchema.CrimeTable;
 
@@ -44,7 +45,22 @@ public class CrimeLab {
     }
 
     public List<Crime> getCrimes(){
+        //return new ArrayList<>();//mf
+        List<Crime> crimes = new ArrayList<>();
 
+        CrimeCursorWrapper cursor = queryCrimes(null, null);
+
+        try{
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()){
+                crimes.add(cursor.getCrime());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+
+        return crimes;
     }
 
     public void addCrime(Crime c){
@@ -53,12 +69,18 @@ public class CrimeLab {
     }
 
     public Crime getCrime(UUID id){
-        /*for (Crime crime : mCrimes){
-            if(crime.getId().equals(id)){
-                return crime;
+        CrimeCursorWrapper cursor = queryCrimes(
+                CrimeTable.Cols.UUID + " + ?", new String[] { id.toString() }
+        );
+        try{
+            if(cursor.getCount() == 0) {
+                return null;
             }
-        }*/
-        return null;
+            cursor.moveToFirst();
+            return cursor.getCrime();
+        } finally {
+            cursor.close();
+        }
     }
 
     public void updateCrime(Crime crime){
@@ -70,7 +92,7 @@ public class CrimeLab {
                 new String[] { uuidString });
     }
 
-    private Cursor queryCrimes(String whereClause, String[] whereArgs){
+    private CrimeCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
                 CrimeTable.NAME,
                 null,
@@ -80,6 +102,7 @@ public class CrimeLab {
                 null,
                 null
         );
+        return new CrimeCursorWrapper(cursor);
     }
 
     private static ContentValues getContentValues(Crime crime){
