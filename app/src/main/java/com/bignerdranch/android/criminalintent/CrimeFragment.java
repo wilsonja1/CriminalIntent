@@ -164,7 +164,7 @@ public class CrimeFragment extends Fragment {
                 if(c.getCount() == 0){
                     return;
                 }
-                
+
                 c.moveToFirst();
                 String suspect = c.getString(0);
                 mCrime.setSuspect(suspect);
