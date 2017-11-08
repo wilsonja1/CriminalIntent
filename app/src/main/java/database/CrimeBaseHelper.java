@@ -4,11 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import database.CrimeDbSchema.CrimeTable;
-
-/**
- * Created by battl on 11/1/2017.
- */
+import database.CrimeDbSchema.CrimeTable;//maybe wrong?
 
 public class CrimeBaseHelper extends SQLiteOpenHelper{
     private static final int VERSION = 1;
@@ -21,11 +17,12 @@ public class CrimeBaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL("create table " + CrimeTable.NAME + "(" +
-        CrimeTable.Cols.UUID + ", " +
-        CrimeTable.Cols.TITLE + ", " +
-        CrimeTable.Cols.DATE + ", " +
-        CrimeTable.Cols.SOLVED + ")"
-        );//14.5
+                CrimeTable.Cols.UUID + ", " +
+                CrimeTable.Cols.TITLE + ", " +
+                CrimeTable.Cols.DATE + ", " +
+                CrimeTable.Cols.SOLVED +
+                ")"
+        );
     }
 
     @Override

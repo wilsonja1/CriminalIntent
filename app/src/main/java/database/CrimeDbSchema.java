@@ -1,9 +1,5 @@
 package database;
 
-/**
- * Created by battl on 11/1/2017.
- */
-
 public class CrimeDbSchema {
     public static final class CrimeTable {
         public static final String NAME = "crimes";

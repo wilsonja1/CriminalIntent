@@ -22,6 +22,8 @@ public class Crime {
     public Crime(UUID id){
         mId = id;
         mDate = new Date();
+        mTitle = "";//Maybe fix
+        mSolved = false;//maybe fix
     }
 
     public UUID getId() {

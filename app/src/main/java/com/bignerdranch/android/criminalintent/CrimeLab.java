@@ -14,9 +14,6 @@ import database.CrimeCursorWrapper;
 import database.CrimeDbSchema;
 import database.CrimeDbSchema.CrimeTable;
 
-/**
- * Created by battl on 10/17/2017.
- */
 
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
@@ -70,7 +67,8 @@ public class CrimeLab {
 
     public Crime getCrime(UUID id){
         CrimeCursorWrapper cursor = queryCrimes(
-                CrimeTable.Cols.UUID + " + ?", new String[] { id.toString() }
+                CrimeTable.Cols.UUID + " + ?",
+                new String[] { id.toString() }
         );
         try{
             if(cursor.getCount() == 0) {
@@ -88,7 +86,8 @@ public class CrimeLab {
         ContentValues values = getContentValues(crime);
 
         //What does this do
-        mDatabase.update(CrimeTable.NAME, values, CrimeTable.Cols.UUID + " = ?",
+        mDatabase.update(CrimeTable.NAME, values,
+                CrimeTable.Cols.UUID + " = ?",
                 new String[] { uuidString });
     }
 
