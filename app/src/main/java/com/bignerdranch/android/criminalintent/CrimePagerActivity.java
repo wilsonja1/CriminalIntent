@@ -8,13 +8,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by battl on 10/22/2017.
- */
+
 
 public class CrimePagerActivity extends AppCompatActivity {
 
@@ -60,5 +59,7 @@ public class CrimePagerActivity extends AppCompatActivity {
                 break;
             }
         }
+
+
     }
 }

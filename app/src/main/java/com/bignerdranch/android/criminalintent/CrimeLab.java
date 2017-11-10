@@ -5,15 +5,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.bignerdranch.android.criminalintent.database.CrimeBaseHelper;
+import com.bignerdranch.android.criminalintent.database.CrimeCursorWrapper;
+import com.bignerdranch.android.criminalintent.database.CrimeDbSchema;
+import com.bignerdranch.android.criminalintent.database.CrimeDbSchema.CrimeTable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import database.CrimeBaseHelper;
-import database.CrimeCursorWrapper;
-import database.CrimeDbSchema;
-import database.CrimeDbSchema.CrimeTable;
-
+import static com.bignerdranch.android.criminalintent.database.CrimeDbSchema.CrimeTable.*;
+import static com.bignerdranch.android.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.*;
 
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
