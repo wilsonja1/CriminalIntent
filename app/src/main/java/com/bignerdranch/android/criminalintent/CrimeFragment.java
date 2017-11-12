@@ -16,6 +16,7 @@ import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -155,7 +156,9 @@ public class CrimeFragment extends Fragment {
 
         PackageManager packageManager = getActivity().getPackageManager();//Closes suspect button if contact list not available
         if(packageManager.resolveActivity(pickContact, PackageManager.MATCH_DEFAULT_ONLY) == null){
-            mSuspectButton.setEnabled(false);
+            mSuspectButton.setEnabled(false);//Why is contact list not available? wierd.
+            
+            Log.d("SUSPECT", "3");//finding suspect error
         }
 
         mPhotoButton = (ImageButton) v.findViewById(R.id.crime_camera);
@@ -191,12 +194,13 @@ public class CrimeFragment extends Fragment {
         if(resultCode != Activity.RESULT_OK){
             return;
         }
-
+        Log.d("SUSPECT", "1");//finding suspect error
         if(requestCode == REQUEST_DATE){
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
         } else if (requestCode == REQUEST_CONTACT && data != null){
+            Log.d("SUSPECT", "2");//finding suspect error
             Uri contactUri = data.getData();
 
             String[] queryFields = new String[] {
