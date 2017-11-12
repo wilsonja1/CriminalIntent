@@ -1,6 +1,7 @@
 package com.bignerdranch.android.criminalintent;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -32,9 +33,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by battl on 10/14/2017.
- */
 
 public class CrimeFragment extends Fragment {
 
@@ -45,6 +43,7 @@ public class CrimeFragment extends Fragment {
     private ImageButton mPhotoButton;
     private ImageView mPhotoView;
     private File mPhotoFile;
+    private Callbacks mCallbacks;//dang
 
 
     private Button mReportButton;
@@ -63,6 +62,21 @@ public class CrimeFragment extends Fragment {
         CrimeFragment fragment = new CrimeFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public interface Callbacks{
+        void onCrimeUpdated(Crime crime);
+    }
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
+
+    public void onDetach(){
+        super.onDetach();
+        mCallbacks=null;
     }
 
     @Override
