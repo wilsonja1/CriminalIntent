@@ -157,7 +157,7 @@ public class CrimeFragment extends Fragment {
         PackageManager packageManager = getActivity().getPackageManager();//Closes suspect button if contact list not available
         if(packageManager.resolveActivity(pickContact, PackageManager.MATCH_DEFAULT_ONLY) == null){
             mSuspectButton.setEnabled(false);//Why is contact list not available? wierd.
-            
+
             Log.d("SUSPECT", "3");//finding suspect error
         }
 
