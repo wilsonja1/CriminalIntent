@@ -3,9 +3,6 @@ package com.bignerdranch.android.criminalintent;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * Created by battl on 10/14/2017.
- */
 
 public class Crime {
     private UUID mId;
@@ -60,4 +57,9 @@ public class Crime {
     public void setSuspect(String suspect){
         mSuspect = suspect;
     }
+
+    public String getPhotoFilename(){
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
 }
