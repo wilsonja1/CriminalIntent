@@ -254,7 +254,7 @@ public class CrimeFragment extends Fragment {
 
     private void updateDate() {
         //Formats without time, also formats to current locale
-        String myString = DateFormat.getDateInstance(DateFormat.LONG).format(mCrime.getDate());
+        String myString = mCrime.getDateAsString();
         mDateButton.setText(myString);
     }
 
@@ -268,9 +268,8 @@ public class CrimeFragment extends Fragment {
 
         //String dateFormat = "EEE, MMM dd";
         //String dateString = DateFormat.format(dateFormat, mCrime.getDate()).toString();
-
         //No longer need to format with dateformat
-        String dateString = DateFormat.getDateInstance(DateFormat.LONG).format(mCrime.getDate());//Change to fit locale
+        String dateString = mCrime.getDateAsString();
 
         String suspect = mCrime.getSuspect();
         if(suspect == null){
