@@ -34,7 +34,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-
 public class CrimeFragment extends Fragment {
 
     private Crime mCrime;
@@ -257,7 +256,6 @@ public class CrimeFragment extends Fragment {
         //Formats without time, also formats to current locale
         String myString = DateFormat.getDateInstance(DateFormat.LONG).format(mCrime.getDate());
         mDateButton.setText(myString);
-        //mCrime.getDate().toString()
     }
 
     private String getCrimeReport(){

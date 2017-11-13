@@ -121,8 +121,6 @@ public class CrimeListFragment extends Fragment {
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.getSupportActionBar().setSubtitle(subtitle);//Null error possibility?
-
-
     }
 
     public void updateUI(){
