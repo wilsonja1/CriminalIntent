@@ -58,7 +58,8 @@
             android:background="@android:color/holo_purple"
             android:cropToPadding="true"
             android:scaleType="centerInside"
-            android:contentDescription="@string/crime_photo_no_image_description"/>
+            android:contentDescription="@string/crime_photo_no_image_description"
+            android:focusable="true"/>
         <ImageButton
             android:id="@+id/crime_camera"
             android:layout_width="match_parent"
