@@ -42,7 +42,7 @@ public class CrimeLab {
         mDatabase.insert(CrimeTable.NAME, null, values);
     }
 
-    public void deleteCrime(Crime c){
+    public void deleteCrime(Crime c){ //deletes crime from the list
         String uuidString = c.getId().toString();//Solves Issues with "" being required in sql query
         mDatabase.delete(CrimeTable.NAME, CrimeTable.Cols.UUID + "=?", new String[] {uuidString});//Delete by ID
         getCrimes();//refresh list
