@@ -16,7 +16,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
+//import android.text.format.DateFormat; use java.text.DateFormat instead
+import java.text.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -253,7 +254,10 @@ public class CrimeFragment extends Fragment {
     }
 
     private void updateDate() {
-        mDateButton.setText(mCrime.getDate().toString());
+        //Formats without time, also formats to current locale
+        String myString = DateFormat.getDateInstance(DateFormat.LONG).format(mCrime.getDate());
+        mDateButton.setText(myString);
+        //mCrime.getDate().toString()
     }
 
     private String getCrimeReport(){
@@ -264,8 +268,11 @@ public class CrimeFragment extends Fragment {
             solvedString = getString(R.string.crime_report_unsolved);
         }
 
-        String dateFormat = "EEE, MMM dd";
-        String dateString = DateFormat.format(dateFormat, mCrime.getDate()).toString();
+        //String dateFormat = "EEE, MMM dd";
+        //String dateString = DateFormat.format(dateFormat, mCrime.getDate()).toString();
+
+        //No longer need to format with dateformat
+        String dateString = DateFormat.getDateInstance(DateFormat.LONG).format(mCrime.getDate());//Change to fit locale
 
         String suspect = mCrime.getSuspect();
         if(suspect == null){
